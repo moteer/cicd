@@ -1,45 +1,60 @@
-# cicd
+# CI / CD
 
-Stell dir vor, du möchtest simples Java Programm an einen Tester oder einen Operations Manager für die Produktion weiter geben.
-wie würdest du das machen?
->> lass die Studenten überlegen
-tester/ops hat keine Ahnung, wie man den Code bauen soll
+## Docker
+
+Stelle dir vor, du möchtest ein simples Java Programm (Hello World)in deiner Organisation an einen Tester zum Testen oder einen Operations Manager für Bereitstellung auf der Produktionsumgebung weiter geben.
+
+> Frage: Wie würdest du das machen? 
+Welche Dateien müsstest du weiter geben? Bedenke, ein Tester kennt sich nicht unbedingt mit Java Code aus. Welche ausführbare Einheit eignet sich zur Weitergabe?
+
 --> man könnte das jar erstellen und weiter geben
 
-
-
-
 1) erstelle eine simples HelloWorld java Programm  mit intellij und maven
-jar erstellen und ausführen:
+
+Jar erstellen und ausführen:
 intellij maven clean compile package aufrufen
-java -cp target/HelloWorld-1.0-SNAPSHOT.jar org.example.Main
-das jar kann ich zusammen mit den instructions an jemanden weiter geben, der es ausführt (wenn er eine java installiert hat)
->> kann jeder tester oder ops das ohne weiteres ausführen?
+```console
+java -cp target/HelloWorld-1.0-SNAPSHOT.jar org.
+example.Main
+````
+
+Das jar kann ich zusammen mit den Instructions an jemanden weiter geben, der es ausführt (wenn er ein java installiert hat)
+> kann jeder tester oder ops das ohne weiteres ausführen?
 java version könnte nicht übereinstimmen
 
-2) Was, wenn ich mich zu einer Datenbank verbinden möchte?
-erstelle eine springboot app mit dem initializer und
-dependencies
+2. Was, wenn ich mich zu einer Datenbank verbinden möchte?
+
+- Erstelle eine Springboot Applikation mit dem [initializer](https://start.spring.io/) und
+Dependencies
 spring data
 h2
-füge folgendes zu application.properties hinzu
+- Ersetze die **applications.properties** folgendermaßen
+
+```
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=password
 spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+```
 
-jar erstellen und ausführen:
-intellij maven clean compile package aufrufen
+Jar erstellen und ausführen:
+Intellij maven clean compile package aufrufen
+```console
 java -jar target/Example-0.0.1-SNAPSHOT.jar
-h2 ist eher für Dev Zwecke geeignet, also für einen Tester oder Ops eher nicht brauchbar. Produktionssystem oder auch Testsysteme werden sicher keine h2 DB einsetzen sondern beispielsweise mysql/oracle/postgresql oder ähnliches
->>migration auf mysql
+```
 
-3) mysql database anbinden
+h2 ist eher für Dev Zwecke geeignet, also für einen Tester oder Ops eher ungeeignet. Produktionssystem oder auch Testsysteme werden sicher keine h2 DB einsetzen sondern beispielsweise Mysql, Oracle, Postgresql, MongoDB, etc
 
 
+3) Mysql Datenbank anbinden
+
+- Ersetze die **applications.properties** folgendermaßen
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/mycompany
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=admin
 spring.datasource.password=admin
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+```
+
