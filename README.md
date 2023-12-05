@@ -14,8 +14,7 @@ Welche Dateien müsstest du weiter geben? Bedenke, ein Tester kennt sich nicht u
 Jar erstellen und ausführen:
 intellij maven clean compile package aufrufen
 ```console
-java -cp target/HelloWorld-1.0-SNAPSHOT.jar org.
-example.Main
+java -cp target/HelloWorld-1.0-SNAPSHOT.jar org.example.Main
 ````
 
 Das jar kann ich zusammen mit den Instructions an jemanden weiter geben, der es ausführt (wenn er ein java installiert hat)
@@ -60,4 +59,53 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 ```
 > Kann man das an an den Tester oder Ops weitergeben? Was wird wahrscheinlich passieren, wenn ein Tester versucht dieses Jar auf seinem Testsystem auszuführen?
 
+4. Installiere Docker
 
+- Befolge die [Docker Installationsanleitung](https://docs.docker.com/get-docker/) für dein OS 
+- Prüfe, ob Docker erfolgreich installiert wurde
+```console
+docker --version
+```
+- Erstelle die einen Account unter [Docker Hub](https://hub.docker.com/)
+
+5. Erstelle einen Docker File/Image/Container für die Java Application und einen weiteren für die mysql Datenbank
+
+    - Java Applikation
+        - Erstelle ein Docker File
+
+        ```console
+        
+        FROM openjdk:22
+
+        RUN mkdir /app
+
+        COPY target/Example-0.0.1-SNAPSHOT.jar /app
+
+        WORKDIR /app
+
+        CMD java -jar Example-0.0.1-SNAPSHOT.jar
+        ```
+        
+        - Starte Docker Desktop und überprüfe ob es läuft
+
+        ```console
+        docker info
+        ```
+
+        - Baue dein Image
+
+        ```console
+        docker build -t hello-world:1.0 .
+        ```
+        - Überprüfe, ob dein Image im lokalen Docker Repo zu finden ist
+        ```console
+        docker images
+        ```
+        - Start dein Container
+        ```console
+        docker run hello-world:1.0
+
+        ```
+        
+
+    - Datenbank
