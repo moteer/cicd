@@ -44,12 +44,13 @@ Intellij maven clean compile package aufrufen
 java -jar target/Example-0.0.1-SNAPSHOT.jar
 ```
 
-h2 ist eher für Dev Zwecke geeignet, also für einen Tester oder Ops eher ungeeignet. Produktionssystem oder auch Testsysteme werden sicher keine h2 DB einsetzen sondern beispielsweise Mysql, Oracle, Postgresql, MongoDB, etc
+Man sieht, diese Anwendung lässt sich auch ohne Weiteres als jar ausliefern und weiter geben.
+h2 ist allerdings eher für Development Zwecke geeignet, also für einen Tester oder Ops eher ungeeignet. Produktionssystem oder auch Testsysteme werden sicher keine h2 DB einsetzen sondern beispielsweise Mysql, Oracle, Postgresql, MongoDB, etc
 
 
 3) Mysql Datenbank anbinden
 
-- Ersetze die **applications.properties** folgendermaßen
+- Ersetze die **applications.properties** folgendermaßen 
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/mycompany
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -57,4 +58,6 @@ spring.datasource.username=admin
 spring.datasource.password=admin
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 ```
+> Kann man das an an den Tester oder Ops weitergeben? Was wird wahrscheinlich passieren, wenn ein Tester versucht dieses Jar auf seinem Testsystem auszuführen?
+
 
