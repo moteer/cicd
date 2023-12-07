@@ -71,7 +71,7 @@ docker --version
 5. Erstelle einen Docker File/Image/Container für die Java Application und einen weiteren für die mysql Datenbank
 
     - Java Applikation
-        - Erstelle ein Docker File
+        - Erstelle eine Datei in deinem Projekt mit dem Namen Dockerfile mit folgendem Inhalt
 
         ```console
         
@@ -106,6 +106,29 @@ docker --version
         docker run hello-world:1.0
 
         ```
-        
+        >Wird das bereits funktionieren? Kann ich meinen Image an einen Tester/Ops so bereits weiter geben? 
 
     - Datenbank
+
+        - Erstelle und starte einen Mysql Datenbank Container vom mysql Image auf [Docker Hub](https://hub.docker.com/) und überprüfe ob der Datenbank Container läuft. 
+
+        ```console
+            docker pull mysql
+            docker run --name app-db -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE_NAME=myDB mysql
+            docker logs 
+        ```
+        >Überlege, ob es grundsätzlich eine gute Idee ist eine Datenbank in einem Container zu haben?
+
+        - Die Datenbank existiert erstmal noch nicht auf dem db server im container. Erstelle folgendes sql script in deinem Projekt und passe im folgenden Script den Pfad zu deinem Script an.
+
+        ```console
+        docker run --name app-db-with-init-script-5.0 -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE_NAME=myDB -v /Users/moteer/projects/cicd/scripts:/docker-entrypoint-initdb.d mysql
+
+        mysql -h 127.0.0.1 -P 3307 -u root -p
+        ```
+
+
+
+
+
+
