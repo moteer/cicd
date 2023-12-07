@@ -1,5 +1,7 @@
 # Slide 1: Was ist Docker?
 
+---
+
 ## Was ist Docker?
 
 - Docker ist eine leistungsfähige Plattform für die Containerisierung von Anwendungen.
@@ -10,6 +12,8 @@
 
 # Slide 2: Warum Docker?
 
+---
+
 ## Warum Docker verwenden?
 
 - **Konsistente Umgebungen:**
@@ -19,3 +23,4 @@
   - Docker-Container können in Sekunden gestartet werden, wodurch schnelle Tests, Bereitstellungen und Skalierungen möglich sind.
 
 - **Skalierbarkeit:**
+  - Docker ermöglicht das einfache Skalieren von Anwendungen, indem mehrere Container auf denselben oder verschiedenen Hosts ausgeführt werden.
