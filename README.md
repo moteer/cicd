@@ -14,6 +14,12 @@ https://moteer.github.io/cicd/
 
 ### Modus für heute
 - CI/CD Intro & Docker I
+- Übungsstart & praktische Demo gleichzeitig
+  - wer mag, darf schon in den BR abtauchen (siehe Lars letzte Woche)
+- Lösungen
+- evtl. Docker II am Nachmittag
+- Übung & praktische Demo gleichzeitig
+- 15:30 Feedback   
 
 ---
 
@@ -46,7 +52,6 @@ https://moteer.github.io/cicd/
 
 ---
 
-### Build Tools
 >Maven
 >```console
 >./mvnw clean package
@@ -100,7 +105,7 @@ Note:
 ### Docker Elemente
 ![Dockerfile to Container](images/dockerfile-container.png "Dockerfile to Container")
 
-- in einer lokalen Registry werden die images gespeichert
+- in einer lokalen Registry werden die Images gespeichert
 - ein Docker Container kann auf Grundlage eines Images durch die Docker Engine ausgeführt werden
 
 Note: 
