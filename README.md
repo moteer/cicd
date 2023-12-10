@@ -3,12 +3,17 @@ https://moteer.github.io/cicd/
 ### Agenda für diese Woche
 - **CI / CD**
   - Intro
-  - Containerisation mit Docker
+  - Containerisation mit Docker I & II
   - CI mit GitHub Actions
 - **Spring Batch**
   - Intro
   - Example App
 - **Projekt Batch in Banking**
+
+---
+
+### Modus für heute
+- CI/CD Intro & Docker I
 
 ---
 
@@ -106,14 +111,21 @@ Note:
 
 **https://hub.docker.com/**
 
->Startet ein public Images als Container
+>Startet ein public Image als Container von Docker Hub
 >```docker
 >docker run docker/whalesay cowsay Hello!
 >```
 Note: 
 - Es gibt Images zum direkt Verwenden auf DockerHub
-- Diese kann man direkt starten oder als image herunter laden
+- Diese kann man direkt starten oder als Image herunter laden
 - Man kann ein eigenes Image mit einem Dockerfile erstellen 
+
+---
+
+**[Übungen](https://github.com/moteer/cicd/blob/main/exercises/exercise1.md)**
+
+- Docker Referenz: https://docs.docker.com/engine/reference/commandline/run/
+- https://www.youtube.com/watch?v=xGn7cFR3ARU
 
 ---
 
