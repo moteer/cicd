@@ -1,16 +1,20 @@
+https://moteer.github.io/cicd/
+
 ### Agenda für diese Woche
 - **CI / CD**
   - Intro
   - Containerisation mit Docker
   - CI mit GitHub Actions
 - **Spring Batch**
+  - Intro
+  - Example App
+- **Projekt Batch in Banking**
 
 ---
 
-### Ziel für heute
+**Ziel für heute**
   - Ich kann CI/CD Grundlegend einordnen.
-  - Mir ist bewusst, welche Probleme Docker löst.
-  - Ich kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) und kann sie auseinander halten.
+  - Mir ist bewusst, welche Probleme Docker löst & kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) sowie kann sie auseinander halten.
   - Installation von Docker auf meinem Rechner.
   - Ich habe erfolgreich einen Docker Container gestartet.
   - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden, was sie tun
@@ -35,6 +39,9 @@
 
 ![JAR](images/jar.png "JAR")
 
+---
+
+### Build Tools
 >Maven
 >```console
 >./mvnw clean package
@@ -95,22 +102,23 @@ Note:
   - Unterschied Docker Image - Container -> OOP Klasse - Instanz/Objekt
 ---
 
-## DockerHub
+### DockerHub
 
 **https://hub.docker.com/**
 
-```docker
-docker run docker/whalesay cowsay Hello!
-```
+>Startet ein public Images als Container
+>```docker
+>docker run docker/whalesay cowsay Hello!
+>```
 Note: 
-- Es gibt public Images zum direkt verwenden auf dockerhub
+- Es gibt Images zum direkt Verwenden auf DockerHub
 - Diese kann man direkt starten oder als image herunter laden
 - Man kann ein eigenes Image mit einem Dockerfile erstellen 
 
 ---
 
-## Docker Kommandos
-**https://docs.docker.com/engine/reference/commandline/run/**
+### Docker Kommandos
+https://docs.docker.com/engine/reference/commandline/run/
 
 ```console
 docker ps
@@ -125,21 +133,25 @@ docker exec ...
 docker --help
 ```
 
+---
 
-## Dockerfile Beispiel
-- Dockerfile beispiel zeigen und erklären Referenz: https://docs.docker.com/engine/reference/builder/
+### Dockerfile Beispiel
 
-```docker
-# Verwende das offizielle OpenJDK-Image als Basis
-FROM openjdk
+Referenz: https://docs.docker.com/engine/reference/builder/
 
-# Setze das Arbeitsverzeichnis im Container
-WORKDIR /app
+>Dockerfile
+>```docker
+># Verwende das offizielle OpenJDK-Image als Basis
+>FROM openjdk
+>
+># Setze das Arbeitsverzeichnis im Container
+>WORKDIR /app
+>
+># Kopiere die JAR-Datei der Spring Boot-Anwendung ins Arbeitsverzeichnis
+>COPY target/MyCompanyApp-0.0.1-SNAPSHOT.jar /app/
+>
+># Setze den Befehl, der beim Start des Containers ausgeführt wird
+>CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
+>```
 
-# Kopiere die JAR-Datei der Spring Boot-Anwendung ins Arbeitsverzeichnis
-COPY target/MyCompanyApp-0.0.1-SNAPSHOT.jar /app/
-
-# Setze den Befehl, der beim Start des Containers ausgeführt wird
-CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
-```
 ---
