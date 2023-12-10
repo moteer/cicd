@@ -40,7 +40,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 Jar erstellen und ausführen:
 Intellij maven clean compile package aufrufen
 ```console
-java -jar target/Example-0.0.1-SNAPSHOT.jar
+java -cp target/Example-0.0.1-SNAPSHOT.jar
 ```
 
 Man sieht, diese Anwendung lässt sich auch ohne Weiteres als jar ausliefern und weiter geben.

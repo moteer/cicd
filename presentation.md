@@ -1,54 +1,133 @@
-## Agenda für die Woche
-- CI / CD
-  - Docker
-  - GitHub Actions
-- Spring Batch
-  - Zinsberechnung Account DB -> Account DB
-  - Bankstatement Berechnung -> Account DB -> Statement DB
-  - Überweisung CSV -> Accounts DB
-  - Transaction management
-  - Chunk based processing
-  - Declarative I/O
-  - Start/Stop/Restart
-  - Retry/Skip
-  - Web based administration interface (Spring Cloud Data Flow)
-
+### Agenda für diese Woche
+- **CI / CD**
+  - Intro
+  - Containerisation mit Docker
+  - CI mit GitHub Actions
+- **Spring Batch**
 
 ---
 
-## CI/CD 
-*Continuous Integration / Deployment-Delivery*
-![](https://hs-6783951.f.hubspotemail.net/hub/6783951/hubfs/DevOps%20Cycle.png?upscale%3Dtrue%26width%3D2240%26upscale%3Dtrue%26name%3DDevOps%20Cycle.png)
-![CI CD Image](images/cicd.png "CI CD")
+### Ziel für heute
+  - Ich kann CI/CD Grundlegend einordnen.
+  - Mir ist bewusst, welche Probleme Docker löst.
+  - Ich kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) und kann sie auseinander halten.
+  - Installation von Docker auf meinem Rechner.
+  - Ich habe erfolgreich einen Docker Container gestartet.
+  - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden, was sie tun
+  - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet
+---
+
+### CI CD Übersicht
+**Continuous Integration / Continuous Deployment (Delivery)**
+![CI CD](images/cicd-overview.png "CI CD")
 
 ---
 
-## JAR erstellen
+### Entwickler Perspektive 
+**Software Development Lifecycle**
+![DEV](images/dev-perspective.png "DEV")
+>- Pull Requests?
+>- Wann werden hier Tests ausgeführt?
+---
+
+### Artefact
+- *Was ist ein auslieferbares Ergebnis eines Java Programms?*
 
 ![JAR](images/jar.png "JAR")
 
-```console
-foo@bar:~$ ./mvnw clean package
-foo@bar:~$ java -jar target/Example-0.0.1-SNAPSHOT.jar
-```
+>Maven
+>```console
+>./mvnw clean package
+>java -cp target/Example-0.0.1-SNAPSHOT.jar
+>```
+
+>Gradle
+>```console
+>./gradlew build
+>java -cp build/libs/Example-0.0.1-SNAPSHOT.jar
+>```
+
+- *Welche Abhängigkeiten müssen alle erfüllt sein, um das JAR auf einem anderen Rechner (Testsytem, Produktionssystem, etc.) ausführen zu können?* ***-> Problem*** 
 
 ---
 
-## Docker
-![Docker](images/docker.jpg "Docker")
+### Docker eine Lösung
+![Docker](images/docker_solution.png "Docker")
 
+Note:
+- **Welche Probleme löst Docker** 
+  - Portabilität der Anwendung mit all seinen Abhängikeiten JDK, Laufzeitumgebungen, Datenbanken, etc. 
+  - Konsistente Umgebungen:
+  - Docker stellt sicher, dass Entwicklung, Test und Produktion in derselben Umgebung erfolgen, um das "Es funktioniert auf meinem Computer"-Problem zu vermeiden.
+  - Schnelle Bereitstellung:
+    - Docker-Container können in Sekunden gestartet werden, was schnelle Tests, Bereitstellungen und Skalierungen ermöglicht.
+  - Effiziente Ressourcennutzung:
+    - Docker ermöglicht eine effiziente Ressourcennutzung durch die gemeinsame Nutzung des Host-Betriebssystems.
+  - Einfache Skalierbarkeit & Orchestrierung:
+    - Durch die einfache Skalierbarkeit von Docker-Containern können Java-Anwendungen problemlos auf mehreren Hosts ausgeführt werden.
+  - Isolation und Abstraktion
+  - Infrastruktur als Code (Dockerfile, docker-compose.yaml, ...)
+  - Integration in CI/CD Pipelines
 ---
-## Docker Elemente
-![Docker Ablauf](images/docker_ablauf.png "Docker Ablauf")
+
+### Docker vs VM
+![Docker](images/docker_vs_vm.png "Docker")
 
 Note: 
-- Docker ist eine leistungsstarke Plattform für die Containerisierung von Anwendungen.
-- Container ermöglichen die Kapselung von Anwendungen und ihrer Abhängigkeiten in isolierten Umgebungen.
-- Im Gegensatz zu virtuellen Maschinen teilen Container das Betriebssystem des Hosts und sind dadurch leichtgewichtiger und schneller.
+- **Docker:**
+  - Teilt den Kernel des Host-Betriebssystems.
+  - Schnelleres Starten und geringerer Ressourcenverbrauch.
+  - Geringere Isolation.
+
+- **Virtuelle Maschine:**
+  - Enthält einen eigenen Betriebssystem-Kernel.
+  - Langsameres Starten und höherer Ressourcenverbrauch.
+  - Stärkere Isolation.
 
 ---
 
-## Dockerfile
+### Docker Elemente
+![Dockerfile to Container](images/dockerfile-container.png "Dockerfile to Container")
+
+- in einer lokalen Registry werden die images gespeichert
+- ein Docker Container kann auf Grundlage eines Images durch die Docker Engine ausgeführt werden
+
+Note: 
+  - Unterschied Docker Image - Container -> OOP Klasse - Instanz/Objekt
+---
+
+## DockerHub
+
+**https://hub.docker.com/**
+
+```docker
+docker run docker/whalesay cowsay Hello!
+```
+Note: 
+- Es gibt public Images zum direkt verwenden auf dockerhub
+- Diese kann man direkt starten oder als image herunter laden
+- Man kann ein eigenes Image mit einem Dockerfile erstellen 
+
+---
+
+## Docker Kommandos
+**https://docs.docker.com/engine/reference/commandline/run/**
+
+```console
+docker ps
+docker ps -a
+docker images
+docker start ...
+docker stop ...
+docker rm ...
+docker rmi ...
+docker pull ...
+docker exec ...
+docker --help
+```
+
+
+## Dockerfile Beispiel
 - Dockerfile beispiel zeigen und erklären Referenz: https://docs.docker.com/engine/reference/builder/
 
 ```docker
@@ -65,35 +144,3 @@ COPY target/MyCompanyApp-0.0.1-SNAPSHOT.jar /app/
 CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
 ```
 ---
-
-# Slide 2: Motivation für Docker in CI/CD für Java
-## Warum Docker in CI/CD für Java?
-
-- **Konsistente Umgebungen:**
-  - Docker stellt sicher, dass Entwicklung, Test und Produktion in derselben Umgebung erfolgen, um das "Es funktioniert auf meinem Computer"-Problem zu vermeiden.
-
-- **Schnelle Bereitstellung:**
-  - Docker-Container können in Sekunden gestartet werden, was schnelle Tests, Bereitstellungen und Skalierungen ermöglicht.
-
-- **Effiziente Ressourcennutzung:**
-  - Docker ermöglicht eine effiziente Ressourcennutzung durch die gemeinsame Nutzung des Host-Betriebssystems.
-
-- **Einfache Skalierbarkeit:**
-  - Durch die einfache Skalierbarkeit von Docker-Containern können Java-Anwendungen problemlos auf mehreren Hosts ausgeführt werden.
-
----
-
-# Slide 3: Docker vs. Virtuelle Maschine (VM)
-## Der Unterschied zwischen Docker und einer VM
-
-![Docker vs. VM](images/docker_vs_vm.png)
-
-- **Docker:**
-  - Teilt den Kernel des Host-Betriebssystems.
-  - Schnelleres Starten und geringerer Ressourcenverbrauch.
-  - Geringere Isolation.
-
-- **Virtuelle Maschine:**
-  - Enthält einen eigenen Betriebssystem-Kernel.
-  - Langsameres Starten und höherer Ressourcenverbrauch.
-  - Stärkere Isolation.

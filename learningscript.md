@@ -1,9 +1,30 @@
-Note: Im Detail:
+## Agenda 
+- CI / CD
+    - Intro
+    - Docker
+    - GitHub Actions
+- Spring Batch
+    - Intro
+    - Zinsberechnung Account DB -> Account DB
+    - Bankstatement Berechnung -> Account DB -> Statement DB
+    - Überweisung CSV -> Accounts DB
+    - Transaction management
+    - Chunk based processing
+    - Declarative I/O
+    - Start/Stop/Restart
+    - Retry/Skip
+    - Web based administration interface (Spring Cloud Data Flow)
+
+---
+
+## Leitfaden
+
   - CI/CD
     - Allgemeines
       - Prinzipiell Release cycle durchgehen
         - wer macht wann wo was von der Anforderung zur Produktion
-        **-> bessere Darstellung finden** 
+        ![](https://substackcdn.com/image/fetch/f_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A//substack-post-media.s3.amazonaws.com/public/images/a0392cd2-a9b4-4c12-8c12-5250127d7df2_1280x1679.jpeg)
+
       - Was machen DEVs typischer Weise? 
         - plan -> develop -> unit (integration) test -> push -> bugfix
         **->darstellung für dev anteil finden**
@@ -58,3 +79,6 @@ CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
 
 
   - Spring Batch 
+
+---
+
