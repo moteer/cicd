@@ -1,134 +1,146 @@
-# CI / CD
+### Agenda für diese Woche
+- **CI / CD**
+  - Intro
+  - Containerisation mit Docker
+  - CI mit GitHub Actions
+- **Spring Batch**
 
-## Docker
+---
 
-Stelle dir vor, du möchtest ein simples Java Programm (Hello World)in deiner Organisation an einen Tester zum Testen oder einen Operations Manager für Bereitstellung auf der Produktionsumgebung weiter geben.
+### Ziel für heute
+  - Ich kann CI/CD Grundlegend einordnen.
+  - Mir ist bewusst, welche Probleme Docker löst.
+  - Ich kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) und kann sie auseinander halten.
+  - Installation von Docker auf meinem Rechner.
+  - Ich habe erfolgreich einen Docker Container gestartet.
+  - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden, was sie tun
+  - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet
+---
 
-> Frage: Wie würdest du das machen? 
-Welche Dateien müsstest du weiter geben? Bedenke, ein Tester kennt sich nicht unbedingt mit Java Code aus. Welche ausführbare Einheit eignet sich zur Weitergabe?
+### CI CD Übersicht
+**Continuous Integration / Continuous Deployment (Delivery)**
+![CI CD](images/cicd-overview.png "CI CD")
 
---> man könnte das jar erstellen und weiter geben
+---
 
-1) erstelle eine simples HelloWorld java Programm  mit intellij und maven
+### Entwickler Perspektive 
+**Software Development Lifecycle**
+![DEV](images/dev-perspective.png "DEV")
+>- Pull Requests?
+>- Wann werden hier Tests ausgeführt?
+---
 
-Jar erstellen und ausführen:
-intellij maven clean compile package aufrufen
+### Artefact
+- *Was ist ein auslieferbares Ergebnis eines Java Programms?*
+
+![JAR](images/jar.png "JAR")
+
+>Maven
+>```console
+>./mvnw clean package
+>java -cp target/Example-0.0.1-SNAPSHOT.jar
+>```
+
+>Gradle
+>```console
+>./gradlew build
+>java -cp build/libs/Example-0.0.1-SNAPSHOT.jar
+>```
+
+- *Welche Abhängigkeiten müssen alle erfüllt sein, um das JAR auf einem anderen Rechner (Testsytem, Produktionssystem, etc.) ausführen zu können?* ***-> Problem*** 
+
+---
+
+### Docker eine Lösung
+![Docker](images/docker_solution.png "Docker")
+
+Note:
+- **Welche Probleme löst Docker** 
+  - Portabilität der Anwendung mit all seinen Abhängikeiten JDK, Laufzeitumgebungen, Datenbanken, etc. 
+  - Konsistente Umgebungen:
+  - Docker stellt sicher, dass Entwicklung, Test und Produktion in derselben Umgebung erfolgen, um das "Es funktioniert auf meinem Computer"-Problem zu vermeiden.
+  - Schnelle Bereitstellung:
+    - Docker-Container können in Sekunden gestartet werden, was schnelle Tests, Bereitstellungen und Skalierungen ermöglicht.
+  - Effiziente Ressourcennutzung:
+    - Docker ermöglicht eine effiziente Ressourcennutzung durch die gemeinsame Nutzung des Host-Betriebssystems.
+  - Einfache Skalierbarkeit & Orchestrierung:
+    - Durch die einfache Skalierbarkeit von Docker-Containern können Java-Anwendungen problemlos auf mehreren Hosts ausgeführt werden.
+  - Isolation und Abstraktion
+  - Infrastruktur als Code (Dockerfile, docker-compose.yaml, ...)
+  - Integration in CI/CD Pipelines
+---
+
+### Docker vs VM
+![Docker](images/docker_vs_vm.png "Docker")
+
+Note: 
+- **Docker:**
+  - Teilt den Kernel des Host-Betriebssystems.
+  - Schnelleres Starten und geringerer Ressourcenverbrauch.
+  - Geringere Isolation.
+
+- **Virtuelle Maschine:**
+  - Enthält einen eigenen Betriebssystem-Kernel.
+  - Langsameres Starten und höherer Ressourcenverbrauch.
+  - Stärkere Isolation.
+
+---
+
+### Docker Elemente
+![Dockerfile to Container](images/dockerfile-container.png "Dockerfile to Container")
+
+- in einer lokalen Registry werden die images gespeichert
+- ein Docker Container kann auf Grundlage eines Images durch die Docker Engine ausgeführt werden
+
+Note: 
+  - Unterschied Docker Image - Container -> OOP Klasse - Instanz/Objekt
+---
+
+## DockerHub
+
+**https://hub.docker.com/**
+
+```docker
+docker run docker/whalesay cowsay Hello!
+```
+Note: 
+- Es gibt public Images zum direkt verwenden auf dockerhub
+- Diese kann man direkt starten oder als image herunter laden
+- Man kann ein eigenes Image mit einem Dockerfile erstellen 
+
+---
+
+## Docker Kommandos
+**https://docs.docker.com/engine/reference/commandline/run/**
+
 ```console
-java -cp target/HelloWorld-1.0-SNAPSHOT.jar org.example.Main
-````
-
-Das jar kann ich zusammen mit den Instructions an jemanden weiter geben, der es ausführt (wenn er ein java installiert hat)
-> kann jeder tester oder ops das ohne weiteres ausführen?
-java version könnte nicht übereinstimmen
-
-2. Was, wenn ich mich zu einer Datenbank verbinden möchte?
-
-- Erstelle eine Springboot Applikation mit dem [initializer](https://start.spring.io/) und
-Dependencies
-spring data
-h2
-- Ersetze die **applications.properties** folgendermaßen
-
-```
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=password
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+docker ps
+docker ps -a
+docker images
+docker start ...
+docker stop ...
+docker rm ...
+docker rmi ...
+docker pull ...
+docker exec ...
+docker --help
 ```
 
-Jar erstellen und ausführen:
-Intellij maven clean compile package aufrufen
-```console
-java -cp target/Example-0.0.1-SNAPSHOT.jar
+
+## Dockerfile Beispiel
+- Dockerfile beispiel zeigen und erklären Referenz: https://docs.docker.com/engine/reference/builder/
+
+```docker
+# Verwende das offizielle OpenJDK-Image als Basis
+FROM openjdk
+
+# Setze das Arbeitsverzeichnis im Container
+WORKDIR /app
+
+# Kopiere die JAR-Datei der Spring Boot-Anwendung ins Arbeitsverzeichnis
+COPY target/MyCompanyApp-0.0.1-SNAPSHOT.jar /app/
+
+# Setze den Befehl, der beim Start des Containers ausgeführt wird
+CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
 ```
-
-Man sieht, diese Anwendung lässt sich auch ohne Weiteres als jar ausliefern und weiter geben.
-h2 ist allerdings eher für Development Zwecke geeignet, also für einen Tester oder Ops eher ungeeignet. Produktionssystem oder auch Testsysteme werden sicher keine h2 DB einsetzen sondern beispielsweise Mysql, Oracle, Postgresql, MongoDB, etc
-
-
-3) Mysql Datenbank anbinden
-
-- Ersetze die **applications.properties** folgendermaßen 
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/mycompany
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.username=admin
-spring.datasource.password=admin
-spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-```
-> Kann man das an an den Tester oder Ops weitergeben? Was wird wahrscheinlich passieren, wenn ein Tester versucht dieses Jar auf seinem Testsystem auszuführen?
-
-4. Installiere Docker
-
-- Befolge die [Docker Installationsanleitung](https://docs.docker.com/get-docker/) für dein OS 
-- Prüfe, ob Docker erfolgreich installiert wurde
-```console
-docker --version
-```
-- Erstelle die einen Account unter [Docker Hub](https://hub.docker.com/)
-
-5. Erstelle einen Docker File/Image/Container für die Java Application und einen weiteren für die mysql Datenbank
-
-    - Java Applikation
-        - Erstelle eine Datei in deinem Projekt mit dem Namen Dockerfile mit folgendem Inhalt
-
-        ```console
-        
-        FROM openjdk:22
-
-        RUN mkdir /app
-
-        COPY target/Example-0.0.1-SNAPSHOT.jar /app
-
-        WORKDIR /app
-
-        CMD java -jar Example-0.0.1-SNAPSHOT.jar
-        ```
-        
-        - Starte Docker Desktop und überprüfe ob es läuft
-
-        ```console
-        docker info
-        ```
-
-        - Baue dein Image
-
-        ```console
-        docker build -t hello-world:1.0 .
-        ```
-        - Überprüfe, ob dein Image im lokalen Docker Repo zu finden ist
-        ```console
-        docker images
-        ```
-        - Start dein Container
-        ```console
-        docker run hello-world:1.0
-
-        ```
-        >Wird das bereits funktionieren? Kann ich meinen Image an einen Tester/Ops so bereits weiter geben? 
-
-    - Datenbank
-
-        - Erstelle und starte einen Mysql Datenbank Container vom mysql Image auf [Docker Hub](https://hub.docker.com/) und überprüfe ob der Datenbank Container läuft. 
-
-        ```console
-            docker pull mysql
-            docker run --name app-db -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE_NAME=myDB mysql
-            docker logs 
-        ```
-        >Überlege, ob es grundsätzlich eine gute Idee ist eine Datenbank in einem Container zu haben?
-
-        - Die Datenbank existiert erstmal noch nicht auf dem db server im container. Erstelle folgendes sql script in deinem Projekt und passe im folgenden Script den Pfad zu deinem Script an.
-
-        ```console
-        docker run --name app-db-with-init-script-5.0 -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE_NAME=myDB -v /Users/moteer/projects/cicd/scripts:/docker-entrypoint-initdb.d mysql
-
-        mysql -h 127.0.0.1 -P 3307 -u root -p
-        ```
-
-
-
-
-
-
+---
