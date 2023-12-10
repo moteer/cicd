@@ -23,16 +23,22 @@ docker run docker/whalesay cowsay Hello!
 - Überprüfe, ob deine Anwendung gestarted wurde. Lass dir die logs der Anwendung anzeigen.
 - Starte einen zweiten und einen dritten Docker Container mit deiner HelloWorld Anwendung.
 
-4. Lass eine deiner React Apps der letzten Woche letzten Woche in einem Container laufen.
+4. ⭐️ Lass eine deiner React Apps der letzten Woche in einem Container laufen.
+- Überlege, was es dazu benötigt, um deine Web Applikation in einem Container abrufen zu können
 - Dockerfile -> Image -> Container starten.
 - Mache die Anwendung für deinen Browser verfügbar.
 
-5. --> Erstelle ein Docker compose file für eine mysql datenbank und eine spring boot app, die darauf zugreift
+5. ⭐️⭐️ Erstelle einen App Container und einen Datenbank Container und lass sie miteinander sprechen. 
+- Starte einen Mysql Datenbank Container vom mysql Image auf [Docker Hub - MYSQL Image](https://hub.docker.com/_/mysql) und überprüfe ob der Datenbank Container läuft. 
+- Die Datenbank existiert erstmal noch nicht auf dem db server im container. Erstelle folgendes 
+[scripts/mydb.sql](../scripts/mydb.sql) in deinem Projekt und passe im folgenden Script den Pfad zu deinem Script an.
 
 # Objective
 - Lerne den grundlegenden Umgang mit Docker und verstehe, welches Problem Docker löst.
-
-
-# not ready yet -> TODO Erik:
-- früher musste man das JAR oder WAR oder was auch immer für ein Artefact an eine OPS Person weiter geben und entsprechende Instruktionen, wie man die Application startet und konfiguriert. Außerdem musste sicher gestellt sein, dass alle Abhängigkeiten in der benötigten Version auf dem Zielsystem für vorhanden sind. (BsP: JVM, NodeJS, Python, etc...)
-- Darstellung, wie das in einem Container vereint wird. -> MIRO
+  - Ich kann CI/CD Grundlegend einordnen.
+  - Mir ist bewusst, welche Probleme Docker löst.
+  - Ich kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) und kann sie auseinander halten.
+  - Installation von Docker auf meinem Rechner.
+  - Ich habe erfolgreich einen Docker Container gestartet.
+  - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden, was sie tun
+  - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet

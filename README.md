@@ -78,7 +78,6 @@ Note:
   - Teilt den Kernel des Host-Betriebssystems.
   - Schnelleres Starten und geringerer Ressourcenverbrauch.
   - Geringere Isolation.
-
 - **Virtuelle Maschine:**
   - Enthält einen eigenen Betriebssystem-Kernel.
   - Langsameres Starten und höherer Ressourcenverbrauch.
