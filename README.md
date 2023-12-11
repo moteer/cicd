@@ -28,7 +28,7 @@ https://moteer.github.io/cicd/
   - Mir ist bewusst, welche Probleme Docker löst & kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) sowie kann sie auseinander halten.
   - Installation von Docker auf meinem Rechner.
   - Ich habe erfolgreich einen Docker Container gestartet.
-  - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden, was sie tun
+  - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden
   - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet
 ---
 
