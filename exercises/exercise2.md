@@ -11,12 +11,11 @@
 - Dockerfile -> Image -> Container starten.
 - Mache die Anwendung für deinen Browser verfügbar.
 
-# TODO Erik
-
-5. ⭐️⭐️ Erstelle einen App Container und einen Datenbank Container und lass sie miteinander sprechen. 
+5. ⭐️⭐️⭐️ Erstelle einen App Container und einen Datenbank Container und lass sie miteinander sprechen. 
 - Starte einen Mysql Datenbank Container vom mysql Image auf [Docker Hub - MYSQL Image](https://hub.docker.com/_/mysql) und überprüfe ob der Datenbank Container läuft. 
-- Die Datenbank existiert erstmal noch nicht auf dem db server im container. Erstelle folgendes 
-[scripts/mydb.sql](../scripts/mydb.sql) in deinem Projekt und passe im folgenden Script den Pfad zu deinem Script an.
-- Verwende folgendes Spring-Boot Projekt, um dich zu
-...
+- Denke dir eine einfach Anwendung aus, oder nimm eine bereits bestehende, die sich mit einer DB verbindet und CRUD Operationen durchführt.
+- Erstelle deine Datenbank und ein paar Datensätze mit einem sql Script, das direkt beim Start des DB Containers geladen wird.
+  - z.B.: so [scripts/mydb.sql](../scripts/mydb.sql) 
+- Schreibe eine Spring-Boot App, die auf diese Datenbank zugreift. (Oder verwende eine, die bereits funktioniert ;))
+- verwende hier ein docker-compose.yaml, um beide container miteinander zu verbinden
 
