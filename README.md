@@ -186,3 +186,41 @@ Note:
 
 Note:
 - hier Beispiel Helloworld App ohne spring-boot verwenden
+
+---
+
+### Docker compose / mehrere Container definieren
+
+docker-compose.yaml
+
+>```json
+>version: '3.8'
+>
+>services:
+>  # MySQL-Datenbank-Service
+>  db:
+>    image: mysql:latest
+>    environment:
+>      MYSQL_ROOT_PASSWORD: rootpassword
+>      MYSQL_DATABASE: mydatabase
+>      MYSQL_USER: dbuser
+>      MYSQL_PASSWORD: dbpassword
+>   ports:
+>      - "3307:3306"
+>
+>  # Webserver-Service mit Nginx
+>  webserver:
+>    image: nginx:latest
+>    ports:
+>      - "8081:80"
+```
+
+Note:
+
+- prüfen, ob sich die container finden können:
+
+>```console
+>apt-get update
+>apt-get install -y default-mysql-client
+>mysql -h db -u dbuser -p
+```
