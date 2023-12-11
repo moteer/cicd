@@ -171,4 +171,18 @@ Referenz: https://docs.docker.com/engine/reference/builder/
 >CMD ["java", "-jar", "MyCompanyApp-0.0.1-SNAPSHOT.jar"]
 >```
 
+Note:
+- Hiermit kann man auf Grundlage seines seiner eigene Anwendug ein Image erstellen
+
 ---
+
+### Docker Image von Dockerfile bauen
+
+- Stelle hier immer sicher, dass das JAR vorher gebaut wurde.
+>```console
+>docker build -t helloworld:2.0 .
+>docker run helloworld:2.0
+>```
+
+Note:
+- hier Beispiel Helloworld App ohne spring-boot verwenden
