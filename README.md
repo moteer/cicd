@@ -27,9 +27,9 @@ https://moteer.github.io/cicd/
   - Ich kann CI/CD Grundlegend einordnen.
   - Mir ist bewusst, welche Probleme Docker löst & kenne die Begrifflichkeiten im Dockerumfeld (Dockerfile, Image, Container, etc) sowie kann sie auseinander halten.
   - Installation von Docker auf meinem Rechner.
-  - Ich habe erfolgreich einen Docker Container gestartet.
+  - Docker Container erfolgreich gestartet.
   - Ich habe Grundlegende Docker Befehle auf der Kommandozeile ausgeführt und verstanden
-  - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet
+  - (Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet)
 ---
 
 ### CI CD Übersicht
@@ -224,3 +224,20 @@ Note:
 >apt-get install -y default-mysql-client
 >mysql -h db -u dbuser -p
 ```
+
+---
+
+### Docker compose / eigene Anwendung
+
+```console
+>version: '3.8'
+>
+>services:
+>  # ...
+>
+>  # Deine eigene Anwendung
+>  myapp:
+>    build:
+>      context: ./path/to/your/app
+>```
+
