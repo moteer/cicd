@@ -1,6 +1,3 @@
-vorher nachbauen 
-  https://github.com/moteer/HelloGitHubActions/edit/main/.github/workflows/ci-run.yaml
-
 17. Einfacher Workflow erstellen:
 - Erstelle einen GitHub Actions Workflow, der bei einem Push auf den main-Branch ausgelöst wird.
 - Führe einen Schritt aus, der den Workflow-Namen ausgibt.
