@@ -297,3 +297,9 @@ jobs:
           mkdir bin
           javac -d bin src/main/java/org/example/Main.java
 ```
+
+### GitHub Actions
+
+**[Übungen](https://github.com/moteer/cicd/blob/main/exercises/exercise3.md)**
+
+>https://docs.github.com/en/actions/learn-github-actions/
