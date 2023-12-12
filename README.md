@@ -304,3 +304,10 @@ jobs:
 **[Übungen](https://github.com/moteer/cicd/blob/main/exercises/exercise3.md)**
 
 >https://docs.github.com/en/actions/learn-github-actions/
+
+---
+
+### GitHub Actions Beispiel
+
+![GitHub Actions Workflow](images/github-actions-workflow2.png "GitHub Actions Workflow")
+
