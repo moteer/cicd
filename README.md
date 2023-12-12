@@ -189,7 +189,14 @@ Note:
 
 ---
 
-### Docker compose / mehrere Container definieren
+**Ziel für Tag 2**
+  - Ich habe mein erstes Dockerfile geschrieben und einen eigenes Image erzeugt und dieses als Container gestartet
+  - Ich habe docker-compose für die Erstellung mehrerer Container eingesetzt und verstanden was da passiert
+  - Ich habe verstanden, was eine CI Pipeline ist und eine erste mit GitHub Actions geschrieben
+
+---
+
+### Docker compose / mehrere Container 
 
 docker-compose.yaml
 
@@ -213,23 +220,23 @@ docker-compose.yaml
 >    image: nginx:latest
 >    ports:
 >      - "8081:80"
-```
+>```
 
 Note:
-
 - prüfen, ob sich die container finden können:
 
+> Diese Befehle installieren einen mysql client
 >```console
 >apt-get update
 >apt-get install -y default-mysql-client
 >mysql -h db -u dbuser -p
-```
+>```
 
 ---
 
 ### Docker compose / eigene Anwendung
 
-```console
+>```console
 >version: '3.8'
 >
 >services:
@@ -241,3 +248,52 @@ Note:
 >      context: ./path/to/your/app
 >```
 
+---
+
+### GitHub Actions
+
+**Tools, Tools und noch mehr Tools**-> [Ecosystem](https://sapphireventures.com/wp-content/uploads/2022/12/FINAL_DEC2022_The-DevOps-Ecosystem-EUR-5.png)
+
+![](https://media3.giphy.com/media/ACLCA6bvwBEvC/giphy.gif?cid=ecf05e47fge7p6suw6lrdgvg45ybosc443s91557b6nvk6o4&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+
+---
+
+### GitHub Actions
+
+>Learn Github Actions:
+>https://docs.github.com/en/actions/learn-github-actions/
+
+![GitHub Actions Workflow](images/github-actions-workflow.png "GitHub Actions Workflow")
+
+
+---
+
+### GitHub actions File
+
+```yaml
+name: Java HelloWorld
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Compile and Run HelloWorld
+        run: |
+          mkdir bin
+          javac -d bin src/main/java/org/example/Main.java
+```
