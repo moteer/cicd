@@ -1,10 +1,8 @@
-17. Einfacher Workflow erstellen:
-- Erstelle einen GitHub Actions Workflow, der bei einem Push auf den main-Branch ausgelöst wird.
-- Führe einen Schritt aus, der den Workflow-Namen ausgibt.
+17. Baue dir folgendes github in deinem eigenen Repo nach oder forke das github
+  https://github.com/moteer/HelloGitHubActions/edit/main/.github/workflows/ci-run.yaml
+  - Prüfe, ob die pipeline bei dir erfolgreich durchläuft
 
-18. Java App kompilieren:
-- Füge dem Workflow hinzu, dass er eine einfache Java-Anwendung kompiliert.
-- Im Anschluss soll ein JAR daraus gemacht werden
+18. Lass dir zusätzlich noch ein jar erstellen
 
 19. Erweitere den Workflow, um ein Docker-Image deiner Java-Anwendung zu erstellen.
 - Verwende ein einfaches Dockerfile.
