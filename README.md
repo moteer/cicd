@@ -297,6 +297,7 @@ jobs:
           mkdir bin
           javac -d bin src/main/java/org/example/Main.java
 ```
+---
 
 ### GitHub Actions
 
