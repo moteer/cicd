@@ -307,6 +307,14 @@ jobs:
 
 ---
 
+**Ziel für Tag 3**
+  - Ich habe mit GitHub Actions - erste Piplines gebaut und verstanden, wofür das gut sein kann
+  - Ich habe mein erstes eigens Release mit GitHub Actions gebaut und kann meine Anwendung als Paket zur Verfügung stellen
+  
+
+
+---
+
 ### GitHub Actions Step by Step Beispiel
 
 ![GitHub Actions Workflow](images/github-actions-workflow2.png "GitHub Actions Workflow")
@@ -335,7 +343,7 @@ jobs:
  - wo kommt eine action her?
  - zeige Marketplace
  - zeige eine action z.B.: https://github.com/actions/setup-java und die zugehörige action.yml
- - zeige, wie ich herausfinde, was die parameter sind für eine action
+ - zeige, wie ich herausfinde, was die Parameter sind für eine action
 
 - lösche 
 >```console

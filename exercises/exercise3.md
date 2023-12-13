@@ -36,7 +36,7 @@
   >          <url>https://maven.pkg.github.com/GITHUBUSER/REPONAME</url>
   >      </repository>
   >  </distributionManagement> 
-  - erstelle einen neuen github actions workflow mit dem Namene Template "Publish Java Package with Maven"
+  - Erstelle einen neuen github actions workflow mit dem Namene Template "Publish Java Package with Maven".
     - checke hier wieder die Java Version ;)
-  - erstelle ein tag zu deinem letzten commit
-  - erstelle über github ein erstes release mit dem tag 
+  - Erstelle ein tag zu deinem letzten Commit.
+  - Erstelle über github ein erstes release mit dem tag. 
