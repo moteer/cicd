@@ -26,4 +26,17 @@
   - Schau die potentiell Fehler situation an und prüfe, was du tun musst, damit der Workflow durchläuft
   - Fixe den Fehler und bring dein Workflow zum Laufen
   
-
+19. Lass dein erstes Release bauen und publishe es auf Github Packages
+  - füge folgendes in deine pom.xml ein und ersetze GITHUBUSER/REPONAME
+  >```console
+  >  <distributionManagement>
+  >      <repository>
+  >          <id>github</id>
+  >          <name>GitHub OWNER Maven Packages</name>
+  >          <url>https://maven.pkg.github.com/GITHUBUSER/REPONAME</url>
+  >      </repository>
+  >  </distributionManagement> 
+  - erstelle einen neuen github actions workflow mit dem Namene Template "Publish Java Package with Maven"
+    - checke hier wieder die Java Version ;)
+  - erstelle ein tag zu deinem letzten commit
+  - erstelle über github ein erstes release mit dem tag 
