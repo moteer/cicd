@@ -1,18 +1,29 @@
-17. Baue dir folgendes github in deinem eigenen Repo nach oder forke das github
-  https://github.com/moteer/HelloGitHubActions/edit/main/.github/workflows/ci-run.yaml
-  - Prüfe, ob die pipeline bei dir erfolgreich durchläuft
+17. Löse eine Nachricht aus, wenn ein Ereignis auf deinem repo eintritt
 
-18. Lass dir zusätzlich noch ein jar erstellen
+- Forke https://github.com/moteer/hello-world-docker
+- Klicke Actions in dein github Repo auf github.com
+- Gehe in deinem Repo auf Actions->New Workflow und wähle Greetings unter den vorgefertigten piplines aus
+- wähle sie aus und ändere die Messages für ein issue
+  >```yaml
+  >issue-message: "hier etwas anderes ..."
+  >pr-message: "auch etwas anderes ..."
+  >```
+- Speicher den Workflow und prüfe ob das funktioniert.
+  - Schreibe ein Issue
+  - Erzeuge einen pull request mit ein paar Änderungen
+  - schau dabei auch unter actions nach, ob dein job gelaufen ist
 
-19. Erweitere den Workflow, um ein Docker-Image deiner Java-Anwendung zu erstellen.
-- Verwende ein einfaches Dockerfile.
+18. Lass deine HelloWorld Java Anwendung von github Actions bauen 
 
-20. Image in Docker Hub veröffentlichen:
-- Veröffentliche das erstellte Docker-Image in Docker Hub. 
-- Erstelle dir dazu einen Account
-bei Docker Hub 
-- Setze Benutzername und Kennwort als Secrets.
+  - Erstelle einen neuen Workflow und wähle das Template CI with Maven
+  - lösche dabei folgende Zeilen
+  >```console
+>    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+>    - name: Update dependency graph
+>      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+>```
+  - Commite den workflow und überprüfe ob er läuft
+  - Schau die potentiell Fehler situation an und prüfe, was du tun musst, damit der Workflow durchläuft
+  - Fixe den Fehler und bring dein Workflow zum Laufen
+  
 
-21. Bedingte Ausführung:
-- Ändere den Workflow so, dass er nur dann ausgeführt wird, wenn Änderungen in einem Verzeichnis namens src vorgenommen wurden.
-Nutze die paths-Eigenschaft in der Trigger-Konfiguration.
