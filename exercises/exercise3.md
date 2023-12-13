@@ -39,4 +39,13 @@
   - Erstelle einen neuen github actions workflow mit dem Namene Template "Publish Java Package with Maven".
     - checke hier wieder die Java Version ;)
   - Erstelle ein tag zu deinem letzten Commit.
-  - Erstelle über github ein erstes release mit dem tag. 
+  - Erstelle über github ein erstes release mit dem tag.
+
+20. Erstelle dir eine pipeline, die ein docker image baut und dieses auf docker hub puplished
+
+21. Testautomatisierung mit GitHub Actions
+   - Erstelle JUnit tests und schaue
+   - Stell sicher, das diese auf in einer github action ausgeführt werden
+   - Provoziere einen einen Test Fehler
+   - Suche nach Möglichkeiten einen Fehlerreport zu generieren
+   - Suche nach einer Möglichkeit um "Test Code Coverage" zu messen
