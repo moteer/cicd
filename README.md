@@ -354,11 +354,26 @@ jobs:
 
 ---
 
+**Ziel für Tag 3**
+  - Ich konnte einen Spring Batch erfolgreich starten
+  - Ich habe eine Idee, wofür das gut sein könnte
+  - Ich habe erste Writer und Reader implementiert
+  - Banking Batch
+  
+---
+
+
 ### Spring Batch
 
+![Batch](images/batch-steps.png "Batch")
 
+---
 
-- https://spring.io/guides/gs/batch-processing/
+### Spring Batch
+
+![Batch](images/spring-batch-diagram.png "Batch")
+
+- Referenz https://spring.io/guides/gs/batch-processing/
 
 Notes:
 - controlling flow of steps
