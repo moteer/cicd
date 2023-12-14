@@ -352,5 +352,15 @@ jobs:
 >      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
 >```
 
+---
 
- Testing against different Java versions
+### Spring Batch
+
+
+
+- https://spring.io/guides/gs/batch-processing/
+
+Notes:
+- controlling flow of steps
+  - https://docs.spring.io/spring-batch/reference/step/controlling-flow.html
+
