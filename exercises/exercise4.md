@@ -4,7 +4,7 @@
 - Verändere den "push" Pfad von dem gs-batch-processing Projekt so, das er auf dein eigenes repo zeigt.
 
 >```console
->git remote set-url origin https://github.com/<DEIN-GITHUB-REPO>/>spring-batch-example.git
+>git remote set-url origin https://github.com/<DEIN-GITHUB-REPO>/spring-batch-example.git
 >git branch -M main
 >git push -u origin main
 >```
