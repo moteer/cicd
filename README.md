@@ -354,11 +354,11 @@ jobs:
 
 ---
 
-**Ziel für Tag 3**
+**Ziel für Tag 4**
   - Ich konnte einen Spring Batch erfolgreich starten
   - Ich habe eine Idee, wofür das gut sein könnte
   - Ich habe erste Writer und Reader implementiert
-  - Banking Batch
+  
   
 ---
 
@@ -379,3 +379,30 @@ Notes:
 - controlling flow of steps
   - https://docs.spring.io/spring-batch/reference/step/controlling-flow.html
 
+
+
+docker run -d -p 3307:3306 --name mein-mysql-container -e MYSQL_ROOT_PASSWORD=root mysql:latest && sleep 10 && docker exec mein-mysql-container sh -c 'dein_script.sh'
+
+
+
+#!/bin/bash
+
+# Wartezeit, um sicherzustellen, dass der MySQL-Server gestartet ist
+sleep 10
+
+# Ausführung des MySQL-Skripts
+mysql -h localhost -u root -proot < mock_data.sql
+
+
+---
+
+**Ziel für Tag 5**
+ - Ich habe ein Banking Batch Processing implementiert
+ - Recap Woche
+  
+**Ablauf**
+  - Teamarbeit an den Aufgaben bis 11 Uhr 
+  - Lösungsvorstellung
+  - Mittag
+  - Weitere Aufgaben && Zeit für alle Themen rund um die Woche
+  
