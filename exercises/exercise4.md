@@ -70,3 +70,12 @@ VALUES ('Sparkasse', '1234567890', 1000.00),
        ('Volksbank', '1357924680', 500.00),
        ('Postbank', '2468013579', 3000.00);
 ```
+
+23. Implementiere einen Möglichkeit einen Job über ein Webinterface zu starten.
+
+- Derzeit ist der "JobLauncher" implizit vorhanden. Um den Job manuell startbar zu machen soll expliziter JobLauncher implementiert werden. 
+  - Finde heraus, wie man das machen kann
+  - Implementiere einen @RestController (/bank/starttransactionprocessing) und stelle über diesen die Möglichkeit bereit einen job zu starten.
+  - (Hinweis: wir wollen der Einfachheit halber keine Datei hochladen)
+  - erstelle eine Möglichkeit einen neuen Job zu starten, jedes Mal, wenn man den @RestController anspricht 
+ 
