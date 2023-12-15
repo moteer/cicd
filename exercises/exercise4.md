@@ -59,3 +59,14 @@ CREATE TABLE Account (
 );
 ```
 - Implementiere ein spring batch, was auf Grundlage dieses täglich eingehenden csvs das Saldo für jedes Konto entsprechend anpasst
+
+- Hier benötigst du auch ein paar Testdaten. Wir gehen in dem Beispiel mal davon aus, dass wir Accounts verschiedener Banken in der selben Tabelle halten. (Wird wahrscheinlich in der Realität nicht so sein ;))
+
+```sql
+INSERT INTO Account (Bank, Kontonummer, Saldo)
+VALUES ('Sparkasse', '1234567890', 1000.00),
+       ('Commerzbank', '9876543210', 1500.00),
+       ('Deutsche Bank', '5432109876', 2000.00),
+       ('Volksbank', '1357924680', 500.00),
+       ('Postbank', '2468013579', 3000.00);
+```
