@@ -393,7 +393,6 @@ sleep 10
 # Ausführung des MySQL-Skripts
 mysql -h localhost -u root -proot < mock_data.sql
 
-
 ---
 
 **Ziel für Tag 5**
@@ -405,4 +404,16 @@ mysql -h localhost -u root -proot < mock_data.sql
   - Lösungsvorstellung
   - Mittag
   - Weitere Aufgaben && Zeit für alle Themen rund um die Woche
+  
+# Recap
+  - CI/CD
+    - Docker 
+      - Befehle, Dockerfile, DockerCompose
+    
+    - GitHub Actions
+      - Pipeline, templates verwenden, custom actions
+    
+  - Spring Batch
+    - reader/writer/processor
+
   
