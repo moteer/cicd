@@ -1,4 +1,5 @@
-https://moteer.github.io/cicd/
+Präsentation: https://moteer.github.io/cicd/
+GitHub: https://github.com/moteer/cicd
 
 ### Agenda für diese Woche
 - **CI / CD**
@@ -378,20 +379,6 @@ jobs:
 Notes:
 - controlling flow of steps
   - https://docs.spring.io/spring-batch/reference/step/controlling-flow.html
-
-
-
-docker run -d -p 3307:3306 --name mein-mysql-container -e MYSQL_ROOT_PASSWORD=root mysql:latest && sleep 10 && docker exec mein-mysql-container sh -c 'dein_script.sh'
-
-
-
-#!/bin/bash
-
-# Wartezeit, um sicherzustellen, dass der MySQL-Server gestartet ist
-sleep 10
-
-# Ausführung des MySQL-Skripts
-mysql -h localhost -u root -proot < mock_data.sql
 
 ---
 
