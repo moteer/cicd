@@ -15,7 +15,7 @@
 - Dockerfile -> Image -> Container starten.
 - Mache die Anwendung für deinen Browser verfügbar.
 
-> Lösung siehe repo: 
+>Lösung siehe repo: 
 >https://github.com/moteer/my-react-app.git
 
 16. ⭐️⭐️⭐️ Erstelle einen App Container und einen Datenbank Container und lass sie miteinander sprechen. 
