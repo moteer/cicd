@@ -1,5 +1,5 @@
-Präsentation: https://moteer.github.io/cicd/
-GitHub: https://github.com/moteer/cicd
+- Präsentation: https://moteer.github.io/cicd/
+- GitHub: https://github.com/moteer/cicd
 
 ### Agenda für diese Woche
 - **CI / CD**
